@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录页面</title>
+    <link rel="stylesheet" href="common/css/base.css">
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="header">
+    <img src="common/images/icon.png" alt="logo" class="logo">
+    <h1>游伴伴</h1>
+    <img src="common/images/good_study.jpg" alt="描述" class="desc">
+</div>
+<div class="content">
+    <div class="login">
+        <form action="###" id="loginForm">
+            <div class="title">WEB教学质量评价系统</div>
+            <div class="identity">
+                <span>身  份</span>
+                <input type="radio" name="identity" value="student" id="student" checked><label for="student">学生</label>
+                <input type="radio" name="identity" value="teacher" id="teacher"><label for="teacher">教师</label>
+                <input type="radio" name="identity" value="leader" id="leader"><label for="leader">领导</label>
+            </div>
+            <div class="account">
+                <span>账  号</span>
+                <input type="text" name="userid" id="userid" placeholder="请输入你的工号/学号">
+            </div>
+            <div class="password">
+                <span>密  码</span>
+                <input type="password" name="password" id="pwd" placeholder="请输入你的密码">
+            </div>
+            <div class="login_btn">
+                <button id="login" type="button">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <p>本页面由游伴伴大力支持</p>
+</div>
+</body>
+<script src="common/bs/jquery2.1.4/dist/jquery.js"></script>
+<script>
+$(function(){
+    $("#login").click(function(){
+        var type = $("[name='identity']:checked").val();
+        var id = $("#userid").val();
+        var pwd = $("#pwd").val();
+        if(id == '' || pwd==''){
+            alert("用户名或密码不能为空！")
+        }else if(type == "student"){
+            if(id!="student" || pwd!="123456"){
+                alert("用户名或密码输入有误！")
+            }else{
+                window.location.href = "./student.html";
+            }
+        }else if(type == "teacher"){
+            if(id!="teacher" || pwd!="123456"){
+                alert("用户名或密码输入有误！")
+            }else{
+                window.location.href = "./teacher.html";
+            }
+        }else if(type == "leader"){
+            if(id!="leader" || pwd!="123456"){
+                alert("用户名或密码输入有误！")
+            }else{
+                window.location.href = "./leader.html";
+            }
+        }
+    })
+})
+</script>
+</html>

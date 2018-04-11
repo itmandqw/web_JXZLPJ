@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教学质量评价页面</title>
+    <link rel="stylesheet" href="common/css/base.css">
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="css/assessment.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="header">
+    <img src="common/images/icon.png" alt="logo" class="logo">
+    <h1>游伴伴</h1>
+    <img src="common/images/good_study.jpg" alt="描述" class="desc">
+</div>
+<div class="content">
+    <h2>请根据问题给教师打分：</h2>
+
+    <div class="question" ng-repeat="q in questions">
+        <h3>{{$index+1}}.{{q.ques}}</h3>
+        <div class="option">
+            <input type="radio" name="grade+{{$index+1}}" value="5" id="very_good_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <label for="very_good_q+{{$index+1}}">非常好</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="grade+{{$index+1}}" value="4" id="better_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <label for="better_q+{{$index+1}}">较好</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="grade+{{$index+1}}" value="3" id="ordinary_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <label for="ordinary_q+{{$index+1}}">一般</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="grade+{{$index+1}}" value="2" id="very_bad_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <label for="very_bad_q+{{$index+1}}">非常差</label>
+        </div>
+        <input type="text" ng-model="a" style="display: none;" id="question{{$index+1}}">
+    </div>
+
+    <div class="tijiao">
+        <button ng-click="tijiao()">提交</button>
+    </div>
+</div>
+
+<div class="footer">
+    <p>本页面由游伴伴大力支持</p>
+</div>
+</body>
+<script src="common/bs/jquery2.1.4/dist/jquery.js"></script>
+<script src="common/bs/angular/angular.js"></script>
+<script src="js/assessment.js"></script>
+</html>

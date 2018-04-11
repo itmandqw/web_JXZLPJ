@@ -1,0 +1,12 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, hr, fieldset, input, p, blockquote, th, td { margin: 0px; padding: 0px; }
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: none; }
+address, caption, cite, code, dfn, th, var { font-style: normal; font-weight: normal; }
+ol, ul { list-style: none; margin: 0; }
+li { list-style: none; }
+caption, th { text-align: left; }
+img a { border: none; }
+a { color: #222; text-decoration: none; cursor: pointer; }
+a:hover { color: #0a68ae; cursor: pointer; }
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clearfix { *zoom: 1; }

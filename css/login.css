@@ -1,0 +1,48 @@
+
+.content .login{
+    width: 300px;
+    height: 300px;
+    background: rebeccapurple;
+    opacity: 0.6;
+    position: absolute;
+    top: 100px;
+    right: 10%;
+}
+.login .title{
+    height: 50px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login input{
+    margin-left: 10px;
+    margin-right: 5px;
+    height: 30px;
+    padding-left: 10px;
+}
+.login .identity{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.login .identity input{
+    height: 13px;
+}
+.login .account{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.login .password{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.login .login_btn{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    text-align: center;
+}
+.login .login_btn button{
+    padding: 6px 52px;
+}

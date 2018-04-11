@@ -1,0 +1,38 @@
+
+.content{
+    width: 100%;
+    height: auto;
+    background: pink;
+    background: url("../common/images/bg3.jpg") no-repeat center /cover;
+}
+
+.content h2{
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.question{
+    padding-bottom: 20px;
+    padding-left: 30%;
+}
+.question h3{
+    padding: 6px 0px;
+}
+.question .option{
+    padding: 4px 0px;
+}
+.question .option input{
+    width: 37px;
+    height: 15px;
+    outline: none;
+}
+
+.tijiao{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.tijiao button{
+    padding: 10px 30px;
+    font-weight: 700;
+    font-size: 18px;
+}

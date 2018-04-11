@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录页面</title>
+    <link rel="stylesheet" href="common/css/base.css">
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="css/student.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="header">
+    <img src="common/images/icon.png" alt="logo" class="logo">
+    <h1>游伴伴</h1>
+    <img src="common/images/good_study.jpg" alt="描述" class="desc">
+</div>
+<div class="content">
+
+    <h2>当前可评教的科目及教师：</h2>
+
+    <div class="userinfo">
+        <p>当前用户: <span>邓起伟</span></p>
+    </div>
+    <ul>
+        <li ng-repeat="list in lists">
+            <a ng-href="{{linkUrl}}" class="clearfix" ng-click="urlHandle($index)" target="_self">
+                <p class="course_name">{{list.course_name}}</p>
+                <p class="course_time">{{list.course_time}}</p>
+                <p class="teacher_name">{{list.teacher_name}}</p>
+                <p class="status" ng-class="{true:'complete',false:'uncomplete'}[list.status]">{{list.status==true?"已完成":"未完成"}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="footer">
+    <p>本页面由游伴伴大力支持</p>
+</div>
+</body>
+<script src="common/bs/jquery2.1.4/dist/jquery.js"></script>
+<script src="common/bs/angular/angular.js"></script>
+<script src="js/student.js"></script>
+</html>

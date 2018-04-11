@@ -1,0 +1,63 @@
+.content{
+    background: url("../common/images/bg1.jpg") no-repeat center /cover;
+}
+.content .userinfo{
+    position: absolute;
+    right: 2%;
+    top: 5%;
+    color: #fff;
+}
+.content .userinfo span{
+    margin-left: 15px;
+}
+
+.content h2{
+    text-align: center;
+    padding: 20px 0px;
+    color: #fff;
+}
+.content ul{
+    width: 70%;
+    margin: 0 auto;
+    overflow: auto;
+    height: 366px;
+}
+.content ul::-webkit-scrollbar{
+    width:0px;
+    opacity:0;
+    -webkit-overflow-scrolling: touch;
+}
+.content ul li{
+    margin-top: 10px;
+    background: #897d7f;
+    padding: 10px 26px;
+}
+.content ul li:hover{
+    background: #685e60;
+}
+.content ul li a{
+}
+.content ul li a p{
+    color: #fff;
+}
+.content ul li a .course_name{
+    float: left;
+    width: 30%;
+}
+.content ul li a .course_time{
+    float: left;
+    margin-left: 20%;
+}
+.content ul li a .teacher_name{
+    float: left;
+    margin-left: 16%;
+}
+.content ul li a .status{
+    float: right;
+}
+.content ul li a .status.complete{
+    color: #56fe56;
+}
+.content ul li a .status.uncomplete{
+    color: #fc5875;
+}

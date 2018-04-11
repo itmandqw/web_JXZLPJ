@@ -1,0 +1,54 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.header{
+    width: 100%;
+    height: 100px;
+}
+.header .logo{
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.header .desc{
+    width: 222px;
+    height: 44px;
+    float: right;
+    margin-right: 10%;
+    margin-top: 28px;
+}
+.header .logo img,
+.header .desc img{
+    width: 100%;
+}
+.header h1{
+    text-align: center;
+    line-height: 100px;
+    float: left;
+    margin-left: 20px;
+}
+
+.content{
+    width: 100%;
+    height: 500px;
+    background: url("../images/bg5.jpg") no-repeat center /cover;
+    position: relative;
+}
+
+
+
+
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background: blanchedalmond;
+}
+.footer p{
+    text-align: center;
+    line-height: 40px;
+}
