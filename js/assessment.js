@@ -1,12 +1,19 @@
 angular.module("myApp",[])
 .controller("myCtrl",["$scope","$http",function($scope,$http){
-    $http.get("data/questions.json")
+    var param = getUrlParams();
+    console.log(param);     //例如id=2,指的是所选的课程id
+    var m = parseInt(Math.random()*3+1);   //m取值1-3,用于随机试卷
+
+    createCourseAndExamMark(param,m);
+
+    $http.get("data/questions"+ m +".json")
         .then(function(data){
             var questions = data.data.questions;
             $scope.questions = questions;
         },function(err){
             console.log(err)
         })
+
 
     var arr = [];
     var res;
@@ -20,6 +27,8 @@ angular.module("myApp",[])
         res = unique(arr);
         // res是最终分数值
         console.log("去重得到最新值的res",res);
+
+        storeLocal(param,res);
     }
 
     $scope.tijiao = function(){
@@ -39,7 +48,6 @@ angular.module("myApp",[])
         }else{
             alert("您已经完成了本次评价");
             setTimeout(function(){
-                var param = getUrlParams();
                 window.location.href = "student.html?"+ param;
             },1000);
         }
@@ -75,6 +83,51 @@ function getUrlParams(){
     var params = window.location.href;
     console.log(params)
     var param = params.split("?")[1];
-    console.log(param);
     return param;
+}
+
+function storeLocal(param,res){
+    if(window.localStorage){
+        var storage = window.localStorage;
+        console.log("转换之前",param,res)
+        param = JSON.stringify("assessment" + param);
+        res = JSON.stringify(res);
+        console.log("转换之后",param,res);
+        storage.setItem(param,res);
+
+        var json = storage.getItem(param);
+        var jsonObj = JSON.parse(json);
+        console.log(jsonObj)
+    }
+}
+
+function createCourseAndExamMark(param,m){
+    if(window.localStorage){
+        var storage = window.localStorage;
+
+        var item = storage.getItem("CourseAndExam");
+        if(!item){
+            console.log("没有课程与随机试卷的记录！");
+            var CourseAndExam = [];
+            CourseAndExam.push({
+                "param":param,
+                "m":m
+            });
+            var CourseAndExamNO = JSON.stringify(CourseAndExam);
+            storage.setItem("CourseAndExam",CourseAndExamNO);
+            console.log("第一个数据已加入")
+        }else{
+            console.log("有课程与随机试卷的记录！")
+            var json = storage.getItem("CourseAndExam");
+            var jsonObj = JSON.parse(json);
+            console.log("从localStroage中取出来的原来的记录",jsonObj);
+            jsonObj.push({
+                "param":param,
+                "m":m
+            });
+            var CourseAndExamYes = JSON.stringify(jsonObj);
+            storage.setItem("CourseAndExam",CourseAndExamYes);
+            console.log("新数据已加入")
+        }
+    }
 }

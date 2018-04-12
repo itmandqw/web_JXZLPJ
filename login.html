@@ -57,10 +57,14 @@ $(function(){
                 window.location.href = "./student.html";
             }
         }else if(type == "teacher"){
-            if(id!="teacher" || pwd!="123456"){
+            var reg = /^teacher+[0-9]$/;
+            if(!reg.test(id) || pwd!="123456"){
                 alert("用户名或密码输入有误！")
             }else{
-                window.location.href = "./teacher.html";
+                console.log(id)
+                var newid = id.split('teacher')[1];
+                console.log(newid)
+                window.location.href = "./teacher.html?id=" + newid;
             }
         }else if(type == "leader"){
             if(id!="leader" || pwd!="123456"){
