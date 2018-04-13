@@ -89,8 +89,9 @@ function getUrlParams(){
 function storeLocal(param,res){
     if(window.localStorage){
         var storage = window.localStorage;
-        console.log("转换之前",param,res)
-        param = JSON.stringify("assessment" + param);
+
+        param = "assessment" + param;
+
         res = JSON.stringify(res);
         console.log("转换之后",param,res);
         storage.setItem(param,res);

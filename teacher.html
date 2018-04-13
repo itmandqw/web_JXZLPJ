@@ -17,32 +17,32 @@
     <img src="common/images/good_study.jpg" alt="描述" class="desc">
 </div>
 <div class="content">
-    <h2>请根据问题给教师打分：</h2>
+    <h2>您本学年所教课程的得分如下：</h2>
 
     <div class="question" ng-repeat="q in questions">
         <h3>{{$index+1}}.{{q.ques}}</h3>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="5" id="very_good_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="5" id="very_good_q+{{$index+1}}"  ng-checked="checkedThis($index)" ng-readonly=true>
             <label for="very_good_q+{{$index+1}}">非常好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="4" id="better_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="4" id="better_q+{{$index+1}}" ng-checked=checkedThis($index) ng-readonly=true>
             <label for="better_q+{{$index+1}}">较好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="3" id="ordinary_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="3" id="ordinary_q+{{$index+1}}" ng-checked="checkedThis($index)" ng-readonly=true>
             <label for="ordinary_q+{{$index+1}}">一般</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="2" id="very_bad_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="2" id="very_bad_q+{{$index+1}}" ng-checked="checkedThis($index)" ng-readonly=true>
             <label for="very_bad_q+{{$index+1}}">非常差</label>
         </div>
         <input type="text" ng-model="a" style="display: none;" id="question{{$index+1}}">
     </div>
 
-    <div class="sum">
-        <p>您本学年的评测结果为90分</p>
-    </div>
+    <!--<div class="sum">-->
+        <!--<p>您本学年的评测结果为90分</p>-->
+    <!--</div>-->
 </div>
 
 <div class="footer">
