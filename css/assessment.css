@@ -27,12 +27,11 @@
     outline: none;
 }
 
-.tijiao{
+.sum{
     text-align: center;
     padding-bottom: 20px;
+    font-weight: 600;
 }
-.tijiao button{
-    padding: 10px 30px;
-    font-weight: 700;
-    font-size: 18px;
+.sum span{
+    color: #aa1919;
 }

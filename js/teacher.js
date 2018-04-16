@@ -3,6 +3,7 @@ angular.module("myApp",[])
         // 都需要教师id=x这个参数
         // 根据localStorage中存储的数据CourseAndExam结果获取m得到试卷，  GET!!!
         // 获取到assessment+params 中的分数值填充到页面中
+
         var param = getUrlParams();
         if(!param){
             window.location.href = "login.html";
@@ -12,51 +13,24 @@ angular.module("myApp",[])
             var scoreArr = getScoreArr(assessmentId);
             console.log("该老师对应的分数",scoreArr);
 
-            $scope.checkedThis = function(i){
-                // console.log(i);
-                for(var j=0;j<scoreArr.length;j++){
-                    // console.log(scoreArr[j].index);
-                    if(scoreArr[j].index == i){
-                        console.log("匹配上")
-                    }
-                }
+            var sum = 0;
+            for(var i = 0;i<scoreArr.length;i++){
+                sum = sum + Number(scoreArr[i].score);
             }
-
-
+            $scope.sum_score = sum;
 
             var m = getM(param);
             $http.get("data/questions"+ m +".json")
                 .then(function(data){
                     var questions = data.data.questions;
-                    $scope.questions = questions;
+
+                    console.log(questions);
+                    var newArr = appendObj(scoreArr,questions);
+
+                    $scope.questions = newArr;
                 },function(err){
                     console.log(err)
                 })
-
-
-            $scope.tijiao = function(){
-                var a1 = $("#question1").val();
-                var a2 = $("#question2").val();
-                var a3 = $("#question3").val();
-                var a4 = $("#question4").val();
-                var a5 = $("#question5").val();
-                var a6 = $("#question6").val();
-                var a7 = $("#question7").val();
-                var a8 = $("#question8").val();
-                var a9 = $("#question9").val();
-                var a10 = $("#question10").val();
-
-                if(a1=="" || a2=="" || a3=="" || a4=="" || a5=="" || a6=="" || a7=="" || a8=="" || a9=="" || a10==""){
-                    alert("请将问题填写完整!!!")
-                }else{
-                    alert("您已经完成了本次评价");
-                    setTimeout(function(){
-                        window.location.href = "student.html?"+ param;
-                    },1000);
-                }
-            }
-
-
         }
     }])
 function unique(arr){
@@ -125,4 +99,13 @@ function getScoreArr(assessmentId){
             return jsonObj;
         }
     }
+}
+
+function appendObj(arr1,arr2){
+    var newArr = [];
+    for(var i =0;i<arr1.length;i++){
+        obj1 = $.extend(arr1[i],arr2[i]);
+        newArr.push(obj1);
+    }
+    return newArr;
 }

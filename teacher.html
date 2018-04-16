@@ -22,27 +22,26 @@
     <div class="question" ng-repeat="q in questions">
         <h3>{{$index+1}}.{{q.ques}}</h3>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="5" id="very_good_q+{{$index+1}}"  ng-checked="checkedThis($index)" ng-readonly=true>
-            <label for="very_good_q+{{$index+1}}">非常好</label>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 5" ng-disabled=true>
+            <label>非常好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="4" id="better_q+{{$index+1}}" ng-checked=checkedThis($index) ng-readonly=true>
-            <label for="better_q+{{$index+1}}">较好</label>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 4" ng-disabled=true>
+            <label>较好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="3" id="ordinary_q+{{$index+1}}" ng-checked="checkedThis($index)" ng-readonly=true>
-            <label for="ordinary_q+{{$index+1}}">一般</label>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 3" ng-disabled=true>
+            <label>一般</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="2" id="very_bad_q+{{$index+1}}" ng-checked="checkedThis($index)" ng-readonly=true>
-            <label for="very_bad_q+{{$index+1}}">非常差</label>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 2" ng-disabled=true>
+            <label>非常差</label>
         </div>
-        <input type="text" ng-model="a" style="display: none;" id="question{{$index+1}}">
     </div>
 
-    <!--<div class="sum">-->
-        <!--<p>您本学年的评测结果为90分</p>-->
-    <!--</div>-->
+    <div class="sum">
+        <p>您本学年的评测结果为 <span>{{sum_score}}</span>分</p>
+    </div>
 </div>
 
 <div class="footer">
