@@ -48,13 +48,16 @@ $(function(){
         var type = $("[name='identity']:checked").val();
         var id = $("#userid").val();
         var pwd = $("#pwd").val();
+
         if(id == '' || pwd==''){
             alert("用户名或密码不能为空！")
         }else if(type == "student"){
-            if(id!="student" || pwd!="123456"){
+            var reg1 = /^student+[0-9]$/;
+            if(!reg1.test(id) || pwd!="123456"){
                 alert("用户名或密码输入有误！")
             }else{
-                window.location.href = "./student.html";
+                var stu_id = id.split('student')[1];
+                window.location.href = "./student.html?stu_id=" + stu_id;
             }
         }else if(type == "teacher"){
             var reg = /^teacher+[0-9]$/;
@@ -62,9 +65,8 @@ $(function(){
                 alert("用户名或密码输入有误！")
             }else{
                 console.log(id)
-                var newid = id.split('teacher')[1];
-                console.log(newid)
-                window.location.href = "./teacher.html?id=" + newid;
+                var teac_id = id.split('teacher')[1];
+                window.location.href = "./teacher.html?id=" + teac_id;
             }
         }else if(type == "leader"){
             if(id!="leader" || pwd!="123456"){

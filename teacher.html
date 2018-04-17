@@ -18,23 +18,27 @@
 </div>
 <div class="content">
     <h2>您本学年所教课程的得分如下：</h2>
+    <div class="userinfo">
+        <p>当前用户: <span>{{name}}</span></p>
+        <button ng-click="logout()" class="logout">退出</button>
+    </div>
 
     <div class="question" ng-repeat="q in questions">
         <h3>{{$index+1}}.{{q.ques}}</h3>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 5" ng-disabled=true>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 10" ng-disabled=true>
             <label>非常好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 4" ng-disabled=true>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 8" ng-disabled=true>
             <label>较好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 3" ng-disabled=true>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 6" ng-disabled=true>
             <label>一般</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 2" ng-disabled=true>
+            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 4" ng-disabled=true>
             <label>非常差</label>
         </div>
     </div>

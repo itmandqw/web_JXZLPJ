@@ -6,9 +6,21 @@
     right: 2%;
     top: 5%;
     color: #fff;
+    text-align: right;
 }
 .content .userinfo span{
     margin-left: 15px;
+}
+.content .userinfo .logout{
+    padding: 6px 20px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    background: #897d7f;
+    color: #fff;
+}
+.content .userinfo .logout:hover{
+    background: #685e60;
 }
 
 .content h2{

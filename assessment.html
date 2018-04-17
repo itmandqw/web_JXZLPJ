@@ -18,23 +18,27 @@
 </div>
 <div class="content">
     <h2>请根据问题给教师打分：</h2>
+    <div class="userinfo">
+        <p>当前用户: <span>{{name}}</span></p>
+        <button ng-click="logout()" class="logout">退出</button>
+    </div>
 
     <div class="question" ng-repeat="q in questions">
         <h3>{{$index+1}}.{{q.ques}}</h3>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="5" id="very_good_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="10" id="very_good_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
             <label for="very_good_q+{{$index+1}}">非常好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="4" id="better_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="8" id="better_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
             <label for="better_q+{{$index+1}}">较好</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="3" id="ordinary_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="6" id="ordinary_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
             <label for="ordinary_q+{{$index+1}}">一般</label>
         </div>
         <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" value="2" id="very_bad_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
+            <input type="radio" name="grade+{{$index+1}}" value="4" id="very_bad_q+{{$index+1}}" ng-model="a" ng-change="radioChange($index+1)">
             <label for="very_bad_q+{{$index+1}}">非常差</label>
         </div>
         <input type="text" ng-model="a" style="display: none;" id="question{{$index+1}}">

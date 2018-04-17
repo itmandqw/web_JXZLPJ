@@ -2,6 +2,12 @@ angular.module("myApp",[])
 .controller("myCtrl",["$scope","$http","$location",function($scope,$http,$location){
     var lists = [];
     var storageLists = [];
+    var stu_id1;
+    var params = $location.search();
+    if(params.stu_id){
+        stu_id1 = params.stu_id;
+        $scope.name = "student" + stu_id1;
+    }
 
     if(window.localStorage){
         console.log("浏览器支持localStorage");
@@ -24,9 +30,10 @@ angular.module("myApp",[])
             storageLists = getLocal();
             console.log("localStorage存在,使用localStorage的数据",storageLists)
             // 如果页面中带有参数，说明是从刚填完信息跳转回来的,把刚才填写的信息的那个科目设置为已完成
-            var params = $location.search();
+
             if(params.id){
                 var id = params.id;
+                console.log(id);
                 storageLists[id].status = true;
                 console.log(storageLists)
                 var changedList = JSON.stringify(storageLists);
@@ -41,9 +48,11 @@ angular.module("myApp",[])
             $scope.linkUrl = "###";
             alert("您已经完成该课程的评价");
         }else{
-            $scope.linkUrl = "assessment.html?id="+ i;
+            $scope.linkUrl = "assessment.html?id="+ i + "&stu_id=" + stu_id1;
         }
-
+    }
+    $scope.logout = function(){
+        window.location.href = "login.html"
     }
 }])
 .config(['$locationProvider',function($locationProvider){

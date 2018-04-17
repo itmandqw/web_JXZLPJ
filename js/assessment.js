@@ -1,10 +1,17 @@
 angular.module("myApp",[])
 .controller("myCtrl",["$scope","$http",function($scope,$http){
-    var param = getUrlParams();
-    console.log(param);     //例如id=2,指的是所选的课程id
+    var params = getUrlParams();
+    console.log(params);     //例如id=2&stu_id=2,指的是所选的课程id
+
+
+    var stu_id = getStuId(params);
+    $scope.name = "student" +stu_id ;
+
+
+    var param = getIdParam(params);
+
     var m = parseInt(Math.random()*3+1);   //m取值1-3,用于随机试卷
 
-    createCourseAndExamMark(param,m);
 
     $http.get("data/questions"+ m +".json")
         .then(function(data){
@@ -46,11 +53,16 @@ angular.module("myApp",[])
         if(a1=="" || a2=="" || a3=="" || a4=="" || a5=="" || a6=="" || a7=="" || a8=="" || a9=="" || a10==""){
             alert("请将问题填写完整!!!")
         }else{
+            createCourseAndExamMark(param,m);
             alert("您已经完成了本次评价");
             setTimeout(function(){
-                window.location.href = "student.html?"+ param;
+                window.location.href = "student.html?"+ params;
             },1000);
         }
+    }
+
+    $scope.logout = function(){
+        window.location.href = "login.html"
     }
 
 }])
@@ -116,7 +128,7 @@ function createCourseAndExamMark(param,m){
             });
             var CourseAndExamNO = JSON.stringify(CourseAndExam);
             storage.setItem("CourseAndExam",CourseAndExamNO);
-            console.log("第一个数据已加入")
+            console.log("已加入投票的奇偶暗示id和随机的m试卷")
         }else{
             console.log("有课程与随机试卷的记录！")
             var json = storage.getItem("CourseAndExam");
@@ -131,4 +143,15 @@ function createCourseAndExamMark(param,m){
             console.log("新数据已加入")
         }
     }
+}
+
+function getStuId(params){
+    var arr = params.split("&")[1];
+    var stuid = arr.split("=")[1]
+    return stuid;
+}
+
+function getIdParam(params){
+    var arr = params.split("&")[0];
+    return arr;
 }

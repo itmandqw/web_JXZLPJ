@@ -18,7 +18,8 @@
     <h2>当前可评教的科目及教师：</h2>
 
     <div class="userinfo">
-        <p>当前用户: <span>邓起伟</span></p>
+        <p>当前用户: <span>{{name}}</span></p>
+        <button ng-click="logout()" class="logout">退出</button>
     </div>
     <ul>
         <li ng-repeat="list in lists">

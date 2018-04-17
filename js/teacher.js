@@ -5,9 +5,14 @@ angular.module("myApp",[])
         // 获取到assessment+params 中的分数值填充到页面中
 
         var param = getUrlParams();
+
         if(!param){
             window.location.href = "login.html";
         }else{
+
+            var id = param.split("=")[1];
+            $scope.name = "teacher" +id ;
+
             var assessmentId = "assessment" + param;
 
             var scoreArr = getScoreArr(assessmentId);
@@ -31,7 +36,13 @@ angular.module("myApp",[])
                 },function(err){
                     console.log(err)
                 })
+
+            $scope.logout = function(){
+                window.location.href = "login.html"
+            }
+
         }
+
     }])
 function unique(arr){
 
