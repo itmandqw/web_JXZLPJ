@@ -1,10 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>领导页面</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教学质量评价页面</title>
+    <link rel="stylesheet" href="common/css/base.css">
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="css/leader.css">
 </head>
-<body>
-领导页面
+<body ng-app="myApp" ng-controller="myCtrl">
+<div class="header">
+    <img src="common/images/icon.png" alt="logo" class="logo">
+    <h1>游伴伴</h1>
+    <img src="common/images/good_study.jpg" alt="描述" class="desc">
+</div>
+<div class="content">
+    <h2>教师情况如下：</h2>
+    <div class="userinfo">
+        <p>当前用户: <span>leader</span></p>
+        <button ng-click="logout()" class="logout">退出</button>
+    </div>
+
+    <div id="bar_chart"></div>
+    <div id="pie_chart"></div>
+</div>
+
+
+
+<div class="footer">
+    <p>本页面由游伴伴大力支持</p>
+</div>
 </body>
+<script src="common/bs/jquery2.1.4/dist/jquery.js"></script>
+<script src="common/bs/angular/angular.js"></script>
+<script src="common/bs/echarts/dist/echarts.min.js"></script>
+<script src="js/leader.js"></script>
 </html>
+
+<!--1，--各个教师分数排名-----以柱状图显示:
+    总分一百：。。。
+    未被评价的写暂未评教
+    左边
+-->
+<!--右边
+2，点击进入某个老师的综合评价（职业道德/学科知识/教学能力/文化素养/交往能力）-->

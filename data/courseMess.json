@@ -53,18 +53,6 @@
       "course_time":"2015.09-2015.12",
       "teacher_name":"高光",
       "status": true
-    },
-    {
-      "course_name":"组网技术",
-      "course_time":"2015.09-2015.12",
-      "teacher_name":"张青峰",
-      "status": false
-    },
-    {
-      "course_name":"ASP.NET程序设计",
-      "course_time":"2014.09-2014.12",
-      "teacher_name":"郭丽萍",
-      "status": true
     }
   ]
 }

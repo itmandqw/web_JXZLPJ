@@ -1,0 +1,45 @@
+.content{
+    background: url("../common/images/bg3.jpg") no-repeat center /cover;
+}
+
+.content .userinfo{
+    position: absolute;
+    right: 2%;
+    top: 5%;
+    color: #fff;
+    text-align: right;
+    z-index: 999;
+}
+.content .userinfo span{
+    margin-left: 15px;
+}
+.content .userinfo .logout{
+    padding: 6px 20px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    background: #897d7f;
+    color: #fff;
+}
+.content .userinfo .logout:hover{
+    background: #685e60;
+}
+
+.content h2{
+    text-align: center;
+    padding: 20px 0px;
+    color: #fff;
+}
+
+.content #bar_chart{
+    width: 40%;
+    height: 400px;
+    float: left;
+    margin-left: 5%;
+}
+.content #pie_chart{
+    width: 40%;
+    height: 400px;
+    float: right;
+    margin-right: 5%;
+}
