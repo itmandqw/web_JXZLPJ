@@ -22,7 +22,7 @@
       "course_name":"oracle数据库系统",
       "course_time":"2016.09-2016.12",
       "teacher_name":"徐可",
-      "status": true
+      "status": false
     },
     {
       "course_name":"嵌入式编程",
@@ -34,7 +34,7 @@
       "course_name":"综合布线技术",
       "course_time":"2014.09-2014.12",
       "teacher_name":"高景菊",
-      "status": true
+      "status": false
     },
     {
       "course_name":"路由技术",
@@ -52,7 +52,7 @@
       "course_name":"网络安全",
       "course_time":"2015.09-2015.12",
       "teacher_name":"高光",
-      "status": true
+      "status": false
     }
   ]
 }

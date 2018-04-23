@@ -11,10 +11,10 @@ angular.module("myApp",[])
     var param = getIdParam(params);
 
     var m = parseInt(Math.random()*3+1);   //m取值1-3,用于随机试卷
-
-
+    console.log(m)
     $http.get("data/questions"+ m +".json")
         .then(function(data){
+            console.log(data);
             var questions = data.data.questions;
             $scope.questions = questions;
         },function(err){

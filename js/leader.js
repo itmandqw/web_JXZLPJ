@@ -4,8 +4,6 @@ angular.module("myApp",[])
     var teacher_score = [];
     var scoreAndNameObj = [];
 
-
-
     //需要的数据：被评价的教师姓名   及总分数  两个数组
     // 获取所有教师姓名组成数组
     $http.get("data/courseMess.json")
