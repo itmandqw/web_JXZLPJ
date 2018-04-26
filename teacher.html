@@ -23,7 +23,7 @@
         <button ng-click="logout()" class="logout">退出</button>
     </div>
 
-    <div class="question" ng-repeat="q in questions">
+    <div class="question cloak" ng-repeat="q in questions">
         <h3>{{$index+1}}.{{q.ques}}</h3>
         <div class="option">
             <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 10" ng-disabled=true>
@@ -45,6 +45,10 @@
 
     <div class="sum">
         <p>您本学年的评测结果为 <span>{{sum_score}}</span>分</p>
+    </div>
+
+    <div class="returnMes">
+        <p>正在跳转回登录页面，倒计时 <span class="timeLeft">3</span> 秒</p>
     </div>
 </div>
 

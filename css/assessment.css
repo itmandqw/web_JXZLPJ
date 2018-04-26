@@ -67,3 +67,21 @@
 .sum span{
     color: #aa1919;
 }
+
+.returnMes{
+    display: none;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 30px;
+    padding: 10px 10px;
+    background: rgba(0,0,0, 0.4);
+}
+.returnMes p .timeLeft{
+    color: red;
+    font-weight: bold;
+}

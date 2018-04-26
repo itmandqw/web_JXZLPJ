@@ -105,6 +105,16 @@ function getScoreArr(assessmentId){
 
         if(!item){
             alert("您的学生还没有参加对您的评价,所以你没有分数可显示");
+            $(".returnMes").css("display","block");
+            var time = $(".timeLeft").html();
+            var timer = setInterval(function(){
+                time -- ;
+                $(".timeLeft").text(time);
+                if(time<=0){
+                    clearInterval(timer);
+                    window.location.href = "login.html"
+                }
+            },1000)
         }else{
             var jsonObj = JSON.parse(item);
             return jsonObj;
