@@ -17,12 +17,12 @@ angular.module("myApp",[])
             }
             console.log("teacher_name",teacher_name)
 
-            //获取被评价的教师总分数组成数组
+            // 获取被评价的教师总分数组成数组
             for(var j=0;j<datas.length;j++){
                 var sumvalue = "";
                 if(window.localStorage){
                     var storage = window.localStorage;
-                    var res = storage.getItem("assessmentid="+j);
+                    var res = storage.getItem("assessment"+j);
                     res1 = JSON.parse(res);
                     if(!res1){
                         sumvalue = 0;
@@ -30,12 +30,31 @@ angular.module("myApp",[])
                         sumvalue = getSum(res1);
                     }
                     teacher_score.push(sumvalue);
-
                 }else{
-                    console.log("浏览器支持localStorage!")
+                    console.log("浏览器不支持localStorage!请尝试使用最新版的chrome浏览器");
                 }
             }
-            console.log("teacher_score",teacher_score)
+            console.log("teacher_score",teacher_score);
+
+            //获取被评价的教师平均分组成数组
+            if(window.localStorage){
+                var avgvalue = "";
+                var newArr = getNewArr();
+                console.log("newArr",newArr);
+
+                for(var i=0;i<newArr.length;i++){
+                    for(var j=0;j<i;j++){
+                        if(newArr[i].k == newArr[j].k){
+                            console.log(i,j)
+                        }
+                    }
+                }
+                console.log("改变之后的newArr",newArr);
+
+            }else{
+                alert("浏览器不支持localStorage,请使用最新版的chrome浏览器");
+            }
+
 
             //柱状图
             var myBarChart = echarts.init(document.getElementById('bar_chart'));
@@ -50,7 +69,6 @@ angular.module("myApp",[])
                 },
                 xAxis: {
                     type: 'category',
-                    // data: ["王伊冉","王健","徐可","耿文波","高景菊","张青峰","张少辉","高光","郭丽萍"]
                     data: teacher_name
                 },
                 yAxis: {
@@ -71,9 +89,9 @@ angular.module("myApp",[])
                         console.log(i);
                         if(window.localStorage){
                             var storage = window.localStorage;
-                            var result = storage.getItem("assessmentid="+i);
-
-                            var resultObj = JSON.parse(result)
+                            var result = storage.getItem("assessment"+i);
+                            var resultObj = []
+                            resultObj = JSON.parse(result)
                             console.log("该教师分数分布resultObj",resultObj);
 
                             var singleScore = [];
@@ -167,6 +185,32 @@ function appendObj(arr1,arr2){
     for(var i =0;i<arr1.length;i++){
         obj1 = $.extend(arr1[i],arr2[i]);
         newArr.push(obj1);
+    }
+    return newArr;
+}
+
+function getNewArr(){
+    var newArr = [];
+    var storage = window.localStorage;
+    //k代表teac ,j代表stu
+    for(var k =0;k<10;k++){
+        // console.log(k);
+        for(var j=0;j<10;j++){
+            var assessmentId = "assessment_tea_id"+ k + "_stu_id" + j;
+            var res = storage.getItem(assessmentId);
+            if(!res){
+                avgvalue = 0;
+            }else{
+                var resArr = JSON.parse(res);
+                res1 = getSum(resArr)
+                // console.log(k,j,res1);
+                newArr.push({
+                    "k":k,
+                    "j":j,
+                    "sum":res1
+                })
+            }
+        }
     }
     return newArr;
 }

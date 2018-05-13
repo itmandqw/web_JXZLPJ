@@ -75,8 +75,8 @@ $(function(){
                 alert("用户名或密码输入有误！")
             }else{
                 console.log(id)
-                var teac_id = id.split('teacher')[1];
-                window.location.href = "./teacher.html?id=" + teac_id;
+                var tea_id = id.split('teacher')[1];
+                window.location.href = "./teacher.html?tea_id=" + tea_id;
             }
         }else if(type == "leader"){
             if(id!="leader" || pwd!="123456"){

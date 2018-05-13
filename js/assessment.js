@@ -1,14 +1,21 @@
 angular.module("myApp",[])
-.controller("myCtrl",["$scope","$http",function($scope,$http){
-    var params = getUrlParams();
-    console.log(params);     //例如id=2&stu_id=2,指的是所选的课程id
+.controller("myCtrl",["$scope","$http","$location",function($scope,$http,$location){
+    // var params = getUrlParams();
+    // console.log(params);     //例如id=2&stu_id=2,指的是所选的课程id
+    var params = $location.search();
+    console.log(params)
 
-
-    var stu_id = getStuId(params);
+    var stu_id = params.stu_id;
+    console.log(stu_id)
     $scope.name = "student" +stu_id ;
 
+    var tea_id = params.tea_id;
+    console.log(tea_id);
 
-    var param = getIdParam(params);
+    // var param = getIdParam(params);
+    var param = "tea_id"+tea_id+"_stu_id"+stu_id;
+    console.log(param);
+    var teacher = tea_id;
 
     var m = parseInt(Math.random()*3+1);   //m取值1-3,用于随机试卷
     console.log(m)
@@ -36,6 +43,8 @@ angular.module("myApp",[])
         console.log("去重得到最新值的res",res);
 
         storeLocal(param,res);
+        teacherScore(teacher,res)
+
     }
 
     $scope.tijiao = function(){
@@ -53,10 +62,11 @@ angular.module("myApp",[])
         if(a1=="" || a2=="" || a3=="" || a4=="" || a5=="" || a6=="" || a7=="" || a8=="" || a9=="" || a10==""){
             alert("请将问题填写完整!!!")
         }else{
-            createCourseAndExamMark(param,m);
+            createCourseAndExamMark(stu_id,tea_id,m);
+
             alert("您已经完成了本次评价");
             setTimeout(function(){
-                window.location.href = "student.html?"+ params;
+                window.location.href = "student.html?tea_id="+tea_id+"&stu_id="+stu_id;
             },1000);
         }
     }
@@ -66,6 +76,12 @@ angular.module("myApp",[])
     }
 
 }])
+    .config(['$locationProvider',function($locationProvider){
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        })
+    }])
 function unique(arr){
 
     var res = [arr[0]];
@@ -91,18 +107,13 @@ function unique(arr){
 
 }
 
-function getUrlParams(){
-    var params = window.location.href;
-    console.log(params)
-    var param = params.split("?")[1];
-    return param;
-}
+
 
 function storeLocal(param,res){
     if(window.localStorage){
         var storage = window.localStorage;
 
-        param = "assessment" + param;
+        param = "assessment_" + param;
 
         res = JSON.stringify(res);
         console.log("转换之后",param,res);
@@ -114,7 +125,7 @@ function storeLocal(param,res){
     }
 }
 
-function createCourseAndExamMark(param,m){
+function createCourseAndExamMark(stu_id,tea_id,m){
     if(window.localStorage){
         var storage = window.localStorage;
 
@@ -123,7 +134,8 @@ function createCourseAndExamMark(param,m){
             console.log("没有课程与随机试卷的记录！");
             var CourseAndExam = [];
             CourseAndExam.push({
-                "param":param,
+                "stu_id":stu_id,
+                "tea_id":tea_id,
                 "m":m
             });
             var CourseAndExamNO = JSON.stringify(CourseAndExam);
@@ -135,23 +147,31 @@ function createCourseAndExamMark(param,m){
             var jsonObj = JSON.parse(json);
             console.log("从localStroage中取出来的原来的记录",jsonObj);
             jsonObj.push({
-                "param":param,
+                "stu_id":stu_id,
+                "tea_id":tea_id,
                 "m":m
             });
             var CourseAndExamYes = JSON.stringify(jsonObj);
             storage.setItem("CourseAndExam",CourseAndExamYes);
             console.log("新数据已加入")
         }
+    }else{
+        alert("浏览器不支持localStorage,请尝试使用最新版的chrome浏览器");
     }
 }
 
-function getStuId(params){
-    var arr = params.split("&")[1];
-    var stuid = arr.split("=")[1]
-    return stuid;
-}
+function teacherScore(teacher,res){
+    if(window.localStorage){
+        var storage = window.localStorage;
 
-function getIdParam(params){
-    var arr = params.split("&")[0];
-    return arr;
+        var param = "assessment" + teacher;
+
+        res = JSON.stringify(res);
+        console.log("转换之后",param,res);
+        storage.setItem(param,res);
+
+        var json = storage.getItem(param);
+        var jsonObj = JSON.parse(json);
+        console.log("存储的是教师的分数",jsonObj)
+    }
 }

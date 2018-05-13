@@ -1,14 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>教师页面</title>
     <link rel="stylesheet" href="common/css/base.css">
     <link rel="stylesheet" href="common/css/common.css">
-    <link rel="stylesheet" href="css/assessment.css">
+    <link rel="stylesheet" href="css/student.css">
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
 <div class="header">
@@ -17,41 +14,22 @@
     <img src="common/images/good_study.jpg" alt="描述" class="desc">
 </div>
 <div class="content">
-    <h2>您本学年所教课程的得分如下：</h2>
+
+    <h2>当前共有{{totalStu}}个学生对您做了评价：</h2>
+
     <div class="userinfo">
         <p>当前用户: <span>{{name}}</span></p>
         <button ng-click="logout()" class="logout">退出</button>
     </div>
-
-    <div class="question cloak" ng-repeat="q in questions">
-        <h3>{{$index+1}}.{{q.ques}}</h3>
-        <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 10" ng-disabled=true>
-            <label>非常好</label>
-        </div>
-        <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 8" ng-disabled=true>
-            <label>较好</label>
-        </div>
-        <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 6" ng-disabled=true>
-            <label>一般</label>
-        </div>
-        <div class="option">
-            <input type="radio" name="grade+{{$index+1}}" ng-checked="q.score == 4" ng-disabled=true>
-            <label>非常差</label>
-        </div>
-    </div>
-
-    <div class="sum">
-        <p>您本学年的评测结果为 <span>{{sum_score}}</span>分</p>
-    </div>
-
-    <div class="returnMes">
-        <p>正在跳转回登录页面，倒计时 <span class="timeLeft">3</span> 秒</p>
-    </div>
+    <ul style="width: 56%;">
+        <li ng-repeat="list in lists">
+            <a ng-href="{{linkUrl}}" class="clearfix" ng-click="urlHandle(list.stu_id)" target="_self">
+                <p style="float: left;">{{$index+1}}</p>
+                <p style="float: right;">查看评分细节</p>
+            </a>
+        </li>
+    </ul>
 </div>
-
 <div class="footer">
     <p>本页面由游伴伴大力支持</p>
 </div>
